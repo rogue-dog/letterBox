@@ -1,0 +1,32 @@
+.input-style{
+
+display : inline;
+background-color: azure;
+
+min-width: 500px;
+
+
+};
+.h1-style{
+    padding-left: 50px;
+    
+    margin-top: 50px;
+    text-align: right;
+    display: list-item;
+  
+    
+
+text-decoration-color: chocolate;
+font-family: 'Times New Roman', Times, serif;
+font-size: large;
+};
+.input-style-two{
+
+    display : inline;
+    background-color: azure;
+   
+    min-width: 500px;
+    
+    
+    };
+

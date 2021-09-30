@@ -1,0 +1,40 @@
+.chat-box-sent{
+    float: right;
+    clear: both;
+    
+
+    
+}
+.p1 {
+    position: relative;
+    text-align: right;
+    background-color: azure;
+    border: blue thin;
+    border-style: solid;
+    box-sizing: content-box;
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    margin: 10px;
+    
+}
+
+.chat-box-recieve{
+    float: left;
+    clear: both;
+
+    
+}
+.p2 {
+    position: relative;
+    text-align: right;
+    background-color: azure;
+    border: blanchedalmond thin;
+    border-style: solid;
+    box-sizing: content-box;
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    margin: 10px;
+    
+}
