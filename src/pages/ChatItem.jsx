@@ -29,7 +29,7 @@ const ChatItem = ({ user }) => {
 
     };
     useEffect(() => {
-        console.log("Start")
+        //console.log("Start")
         let channel1 = state.user.phone + "/" + user[1];
         //alert(channel1);
         let channel2 = user[1] + "/" + state.user.phone;
@@ -37,7 +37,7 @@ const ChatItem = ({ user }) => {
         let k = db.collection("messages").where("channel", "in", [channel1, channel2])
             .orderBy("dateTime", "desc").limit(1).onSnapshot((querySnapshot) => {
                 let last = "";
-                console.log("Cool");
+                // console.log("Cool");
                 querySnapshot.forEach((doc) => {
 
                     last = doc.data()['content'];

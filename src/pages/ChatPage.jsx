@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { AppContext } from "../initialState";
 import { useState } from "react";
 import "./LoginPage.css";
@@ -20,6 +20,7 @@ const ChatPage = () => {
     let v = useRef(null);
 
 
+
     let channel = state.user['phone'] + "/" + state.chattingWith.phone;
     const sendMessage = async () => {
         let d = new Date();
@@ -31,7 +32,7 @@ const ChatPage = () => {
             channel: channel,
             dateTime: now,
             sentBy: state.user['phone'],
-            id: channel + utc
+            id: channel + utc + now
         };
         if (message) {
 
@@ -52,7 +53,13 @@ const ChatPage = () => {
 
 
     }
+    const pressEnter = (e) => {
 
+        if (e.keyCode == 13) {
+            sendMessage();
+        }
+
+    }
 
 
     useIonViewDidEnter(async () => {
@@ -101,11 +108,11 @@ const ChatPage = () => {
                     <IonRow>
                         <IonCol size="11" >
 
-                            <IonInput value={message} placeholder="Pour Your Heart Out.." onIonChange={(e) => { setMessage(e.target.value) }}></IonInput>
+                            <IonInput value={message} placeholder="Pour Your Heart Out.." onIonChange={(e) => { setMessage(e.target.value) }} id="msgInput" onKeyUp={e => pressEnter(e)}></IonInput>
                         </IonCol>
                         <IonCol >
 
-                            <IonButton size="2" onClick={(e) => { sendMessage() }}>Send</IonButton>
+                            <IonButton size="2" onClick={(e) => { sendMessage() }} >Send</IonButton>
                         </IonCol>
                     </IonRow>
                 </IonGrid>
