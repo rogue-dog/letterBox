@@ -17,22 +17,31 @@ firebase.initializeApp(firaebaseConfig);
 const db = firebase.firestore();
 
 
-let channel = "ww/1111111111";
+let id = `ww/1111111111Mon, 04 Oct 2021 23:26:11 GMT`;
+let k = async () => {
+    let ids = [];
+    let f = await db.collection("messages").where("id", "==", id).get().then((q) => {
+        q.forEach((doc) => {
+            ids.push(doc.id);
+            console.log("done");
 
-var AllUser = [];
-let a = async () => {
+        })
+    })
 
-    let v = await db.collection("messages").where("channel", "in", [channel, channel.split("").reverse().join("")])
-        .orderBy("dateTime").limit(100).onSnapshot((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-                console.log(doc.data());
-                console.log("as");
-            });
-        });
+    Delete(ids);
 }
 
-a();
+const Delete = async (ids) => {
+    ids.forEach((id) => {
 
+        let d = db.collection("messages").doc(id).delete().then(() => {
+            console.log("Document successfully deleted!");
+        })
+    })
+
+
+}
+k();
 
 
 
