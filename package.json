@@ -1,10 +1,6 @@
 {
   "name": "letterBox",
   "version": "0.0.1",
-  "engines": {
-    "npm": "6.14.14",
-    "node": "14.17.5"
-  },
   "private": true,
   "dependencies": {
     "@ionic/react": "^5.5.0",
