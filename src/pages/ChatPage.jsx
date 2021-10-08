@@ -31,7 +31,7 @@ const ChatPage = () => {
             content: message,
             channel: channel,
             dateTime: now,
-            sentBy: state.user['phone'],
+            participants: [state.user['phone'], state.chattingWith.phone],
             id: channel + utc + now
         };
         if (message) {
@@ -44,6 +44,8 @@ const ChatPage = () => {
             }).catch((error) => {
                 alert(error);
             });
+
+
         }
         else {
             alert("Cannot Send Empty messages!");
@@ -89,6 +91,11 @@ const ChatPage = () => {
     useIonViewWillLeave(() => {
         v = null;
         msgsRecieved(false);
+        var action = {
+            type: "Tabs",
+            payload: true
+        };
+        dispatch(action);
     })
 
 

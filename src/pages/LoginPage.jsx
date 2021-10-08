@@ -7,7 +7,7 @@ import {
     Route,
     Link
 } from "react-router-dom";
-import Tab2 from './Tab2';
+import Tab2 from './AllUsers';
 import db from "../Firestore";
 import { loadPartialConfigAsync } from '@babel/core';
 import signIn from './SignIn';
@@ -31,7 +31,7 @@ function LoginForm() {
             setShowLoading(true);
             //Check the <inputsssss className=""></inputsssss>
             let user;
-            alert(password);
+            //alert(password);
             var ids;
             let user_exists = true;
             let user_id = await db.collection("users").doc(phoneNumber.toString()).get().
@@ -48,8 +48,9 @@ function LoginForm() {
                             setShowLoading(false);
                         }
                         else {
-                            alert("Welcome" + name.toString());
+                            //alert("Welcome");
                             user = doc.data();
+                            alert("Welcome " + user.name);
                             var action = {
                                 type: "LoginUser"
                                 , payload: user

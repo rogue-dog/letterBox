@@ -11,8 +11,8 @@ import {
 import { IonReactRouter } from '@ionic/react-router';
 import { ellipse, square, triangle, videocam } from 'ionicons/icons';
 
-import Tab1 from './pages/Tab1';
-import Tab2 from './pages/Tab2';
+import Tab1 from './pages/Contacts';
+import Tab2 from './pages/AllUsers';
 
 
 /* Core CSS required for Ionic components to work properly */
@@ -39,49 +39,55 @@ import LoginForm from './pages/LoginPage';
 import ChatPage from './pages/ChatPage';
 
 
+
 function App() {
+
   let { state, dispatch } = useContext(AppContext);
 
+
+  function Router() {
+
+    return (
+      <IonReactRouter>
+        <IonTabs>
+          <IonRouterOutlet>
+            <Route exact path="/tab1">
+              <Tab1 />
+            </Route>
+            <Route exact path="/tab2">
+              <Tab2 />
+            </Route>
+            <Route exact path="/chatpage">
+              <ChatPage />
+            </Route>
+
+            <Route exact path="/">
+              <Redirect to="/tab2" />
+
+            </Route>
+          </IonRouterOutlet>
+          {state.tabs ? <IonTabBar slot="bottom">
+            <IonTabButton tab="tab1" href="/tab1">
+              <IonIcon icon={triangle} />
+              <IonLabel>Contacts</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="tab2" href="/tab2">
+              <IonIcon icon={ellipse} />
+              <IonLabel>All Users</IonLabel> </IonTabButton> </IonTabBar> : <IonTabBar />}
+
+
+
+
+        </IonTabs>
+      </IonReactRouter>)
+  }
+
+  ;
   return (<IonApp>
     {state.user ? <Router /> : <LoginForm />}
 
   </IonApp>);
 }
-function Router() {
-  return (<IonReactRouter>
-    <IonTabs>
-      <IonRouterOutlet>
-        <Route exact path="/tab1">
-          <Tab1 />
-        </Route>
-        <Route exact path="/tab2">
-          <Tab2 />
-        </Route>
-        <Route exact path="/chatpage">
-          <ChatPage />
-        </Route>
 
-        <Route exact path="/">
-          <Redirect to="/tab1" />
-
-        </Route>
-      </IonRouterOutlet>
-      <IonTabBar slot="bottom">
-        <IonTabButton tab="tab1" href="/tab1">
-          <IonIcon icon={triangle} />
-          <IonLabel>Contacts</IonLabel>
-        </IonTabButton>
-        <IonTabButton tab="tab2" href="/tab2">
-          <IonIcon icon={ellipse} />
-          <IonLabel>All Users</IonLabel>
-        </IonTabButton>
-
-
-      </IonTabBar>
-    </IonTabs>
-  </IonReactRouter>)
-}
-
-;
 
 export default App;

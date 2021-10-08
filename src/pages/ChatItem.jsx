@@ -22,8 +22,13 @@ const ChatItem = ({ user }) => {
             type: "ChatStarted",
             payload: user
         };
-        setLastmsg("Lol");
+        // setLastmsg("Lol");
         dispatch(action);
+        var action2 = {
+            type: "Tabs",
+            payload: false
+        };
+        dispatch(action2);
         history.push({ pathname: '/chatpage' });
 
 
@@ -65,7 +70,7 @@ const ChatItem = ({ user }) => {
             <IonLabel>
                 <h2><strong>{user[0]}</strong></h2>
                 <h3>{user[1]}</h3>
-                <p> {lastmsg || "..."}</p>
+                <p> {lastmsg || "Click Here to Talk to this fella."}</p>
                 <button onClick={(e) => { OpenChatPage() }} className="button-style"> Talk </button>
             </IonLabel>
 

@@ -11,7 +11,8 @@ const intialState = {
     chattingWith: {
         name: "",
         phone: ""
-    }
+    },
+    tabs: true
 
 
 };
@@ -35,6 +36,11 @@ const reducer = (state, action) => {
                     name: action.payload[0],
                     phone: action.payload[1]
                 }
+            };
+        case "Tabs":
+            return {
+                ...state,
+                tabs: action.payload
             };
 
         default:

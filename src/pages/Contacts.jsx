@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, useIonViewDidEnter, useIonViewWillEnter } from '@ionic/react';
 import { useContext, useEffect, useState } from 'react';
 import ExploreContainer from '../components/ExploreContainer';
 import './Tab1.css';
@@ -12,20 +12,10 @@ const Tab1 = () => {
   let user_id = state.user.phone;
   let users = [];
 
-  const checkContact = (channel) => {
-    let msgs = db.collection("messaages");
-    msgs.doc(channel).get().then((doc) => {
-      if (doc.exists) {
-        return true;
-      }
-    });
-    msgs.doc(channel.split("/").reverse().join("/")).get().then((doc) => {
-      if (doc.exists) {
-        return true;
-      }
-    });
-    return false;
-  }
+
+  useIonViewDidEnter(async () => {
+
+  })
 
 
 
@@ -45,7 +35,7 @@ const Tab1 = () => {
       </IonHeader>
       <IonContent>
 
-        { }
+        Coming Soon!!
       </IonContent>
 
     </IonPage>
